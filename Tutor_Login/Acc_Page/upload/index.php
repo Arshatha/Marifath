@@ -1,3 +1,7 @@
+<?php
+echo $_POST["option1"];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<header>

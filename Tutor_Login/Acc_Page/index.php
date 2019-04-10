@@ -49,7 +49,7 @@ $(document).ready(function(){
                 data:'1_id='+OneID,
                 success:function(html){
                     $('#option2').html(html);
-                    $('#option3').html('<option value="">Select Option2 first</option>');
+                    $('#option3').html('<option value="OPtion2">Select Option2 first</option>');
                     $('#option4').html('<option value="">Select Option3 first</option>');
                     $('#option5').html('<option value="">Select Option4 first</option>'); 
                     $('#option6').html('<option value="">Select Option5 first</option>'); 
@@ -143,6 +143,7 @@ $(document).ready(function(){
 });
 </script>
 
+
 <style type="text/css">
 	.column {
   float: left;
@@ -160,14 +161,14 @@ $(document).ready(function(){
 
 		<div class="wrap-contact100" style="width: 100% !important">
 			<div class="column" style="float: left !important;">
-			<form class="contact100-form validate-form" style="width: 30% !important">
+			<form class="contact100-form validate-form" method="post" style="width: 30% !important" onsubmit="validate();">
 				<span class="contact100-form-title">
 					 Hello!<?php echo $login_session; ?>
 				</span>
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Option1</span>
 					<div>					
-					<select id="option1" class="selection-2">
+					<select id="option1" name="option1" class="selection-2">
                     <option value="">Select Option1</option>
                     <?php
                     if($rowCount > 0){
@@ -186,7 +187,7 @@ $(document).ready(function(){
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Option4</span>
 					<div>
-		<select id="option4" class="selection-2">
+		<select id="option4" name="option4" class="selection-2">
     <option value="">Select Option3 first</option>
 </select>
 					</div>
@@ -303,6 +304,15 @@ $(document).ready(function(){
 			minimumResultsForSearch: 20,
 			dropdownParent: $('#dropDownSelect1')
 		});
+	</script>
+	<script type="text/javascript">
+		function validate() {
+			if (option1.value||option2.value||option3.value||option4.value||option5.value||option6.value==0) {
+				alert ("Please fill all the options");
+				break;
+
+			}
+		}
 	</script>
 <!--===============================================================================================-->
 	<script src="vendor/daterangepicker/moment.min.js"></script>
