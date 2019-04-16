@@ -13,7 +13,7 @@ $rowCount = $query->num_rows;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>PHP File Upload 2</title>
+	<title>PHP File Upload 1</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -152,7 +152,7 @@ $(document).ready(function(){
 
 		<div class="wrap-contact100" style="width: 100% !important">
 			<div class="column" style="float: left !important;">
-			<form class="contact100-form validate-form" name="formUploadFile" method="post" style="width: 30% !important" enctype="multipart/form-data" id="uploadForm" action="upload.php" onsubmit="return validate();"> 
+			<form class="contact100-form validate-form" name="optionform" method="post" style="width: 30% !important"> 
 				<span class="contact100-form-title">
 					 Upload Files<?php echo $login_session; ?>					 
 				</span>
@@ -248,21 +248,21 @@ $(document).ready(function(){
 		</div>
 				
 		
-			<!--</form>-->
+			</form>
 						
 				</div>
 				<div class="panel panel-default">
 				<div class="panel-body">
-					<!--<form method="post" enctype="multipart/form-data" name="formUploadFile" id="uploadForm" action="upload.php" onsubmit="return validate();" >-->
+					<form method="post" enctype="multipart/form-data" name="formUploadFile" id="uploadForm" action="upload.php" onsubmit="return validate();" >
 						<div class="form-group">
 							<label for="exampleInputFile">Select files to upload:</label>
-							<input type="file" id="exampleInputFile" name="files[]" multiple="multiple" required="required">
+							<input type="file" id="exampleInputFile" name="files[]" multiple="multiple">
 							<p class="help-block"><span>Note:</span> Please, Select the only pdf files to upload with the size of 5MB only.</p>
 						</div>	
 						<div class="container-contact100-form-btn" style="width: 10%">
 					<div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn" ></div>
-							<button type="submit" class="contact100-form-btn" name="btnSubmit">Submit</button>
+							<button type="submit" class="contact100-form-btn" name="btnSubmit" >Submit</button>
 							
 
 					</div>
@@ -368,26 +368,7 @@ $(document).ready(function(){
 			dropdownParent: $('#dropDownSelect1')
 		});
 	</script>
-<script type="text/javascript">
-		function validate() {
-		var a = document.forms["uploadForm"]["option1"].value;
-		var b = document.forms["uploadForm"]["option2"].value;
-		var c = document.forms["uploadForm"]["option3"].value;
-		var d = document.forms["uploadForm"]["option4"].value;
-		var e = document.forms["uploadForm"]["option5"].value;
-		var f = document.forms["uploadForm"]["option6"].value;
-  		if (a&&b&&c&&d&&e&&f != "") {
-  			window.location.header="upload.html";
-  			return true;
 
-}
-    else{
-    	alert("All options must be filled");
-    	return false;
-    }
-	}
-
-	</script>
 
 			<script src="js/jQuery.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
