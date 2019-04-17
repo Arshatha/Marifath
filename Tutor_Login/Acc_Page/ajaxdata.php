@@ -1,10 +1,10 @@
 <?php
 //Include the database configuration file
-include 'dbconfig.php';
+include 'connect.php';
 
 if(!empty($_POST["1_id"])){
     //Fetch all state data
-    $query = $db->query("SELECT * FROM Option2 WHERE 1_id = ".$_POST['1_id']." AND status = 1 ORDER BY 2_name ASC");
+    $query = $con->query("SELECT * FROM Option2 WHERE 1_id = ".$_POST['1_id']." AND status = 1 ORDER BY 2_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -20,7 +20,7 @@ if(!empty($_POST["1_id"])){
     }
 }elseif(!empty($_POST["2_id"])){
     //Fetch all city data
-    $query = $db->query("SELECT * FROM Option3 WHERE 2_id = ".$_POST['2_id']." AND status = 1 ORDER BY 3_name ASC");
+    $query = $con->query("SELECT * FROM Option3 WHERE 2_id = ".$_POST['2_id']." AND status = 1 ORDER BY 3_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -36,7 +36,7 @@ if(!empty($_POST["1_id"])){
     }
 }elseif(!empty($_POST["3_id"])){
     //Fetch all city data
-    $query = $db->query("SELECT * FROM Option4 WHERE 3_id = ".$_POST['3_id']." AND status = 1 ORDER BY 4_name ASC");
+    $query = $con->query("SELECT * FROM Option4 WHERE 3_id = ".$_POST['3_id']." AND status = 1 ORDER BY 4_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -52,7 +52,7 @@ if(!empty($_POST["1_id"])){
     }
 }elseif(!empty($_POST["4_id"])){
     //Fetch all city data
-    $query = $db->query("SELECT * FROM Option5 WHERE 4_id = ".$_POST['4_id']." AND status = 1 ORDER BY 5_name ASC");
+    $query = $con->query("SELECT * FROM Option5 WHERE 4_id = ".$_POST['4_id']." AND status = 1 ORDER BY 5_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;
@@ -68,7 +68,7 @@ if(!empty($_POST["1_id"])){
     }
 }elseif(!empty($_POST["5_id"])){
     //Fetch all city data
-    $query = $db->query("SELECT * FROM Option6 WHERE 5_id = ".$_POST['5_id']." AND status = 1 ORDER BY 6_name ASC");
+    $query = $con->query("SELECT * FROM Option6 WHERE 5_id = ".$_POST['5_id']." AND status = 1 ORDER BY 6_name ASC");
     
     //Count total number of rows
     $rowCount = $query->num_rows;

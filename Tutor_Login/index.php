@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php  //Start the Session
-session_start();
+/*session_start();
  require('connect.php');
 //3. If the form is submitted or not.
 //3.1 If the form is submitted
@@ -17,7 +17,7 @@ $count = mysqli_num_rows($result);
 if ($count == 1){
 $_SESSION['username'] = $username;
 }
-else if($username||$password=="\0") {
+else if($username||$password=="\0") {	
 	header("Location:index.php");
 
 }else{
@@ -31,8 +31,35 @@ $username = $_SESSION['username'];
 
 header("Location:Acc_Page/index.php"); 
 }else{
-//3.2 When the user visits the page first time, simple login form will be displayed.
+//3.2 When the user visits the page first time, simple login form will be displayed.*/
+include "connect.php";
+
+
+if(isset($_POST['but_submit'])){
+
+    $uname = mysqli_real_escape_string($con,$_POST['txt_uname']);
+    $password = mysqli_real_escape_string($con,$_POST['txt_pwd']);
+
+
+    if ($uname != "" && $password != ""){
+    	$sql_query = "SELECT count(*) as cntUser from user where username='".$uname."' and password='".$password."'";
+        $result = mysqli_query($con,$sql_query);
+        $row = mysqli_fetch_array($result);
+
+        $count = $row['cntUser'];
+
+        if($count == 1){
+            $_SESSION['uname'] = $uname;
+            header("Location: Acc_Page/index.php");
+        }else{
+            $fmsg= "Invalid username and password";
+        }
+
+    }
+
+}
 ?>
+
 <html lang="en">
 <head>
 	<title>Login V11</title>
@@ -62,14 +89,14 @@ header("Location:Acc_Page/index.php");
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
-				<form class="login100-form validate-form" method="POST" autocomplete="off">
+				<form class="login100-form validate-form" method="post" autocomplete="off" action="">
 					<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 					<span class="login100-form-title p-b-55">
 						Tutor Login
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Valid username is required">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						  <input type="text" class="input100" id="txt_uname" name="txt_uname" placeholder="Username" required="required">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-envelope"></span>
@@ -77,7 +104,7 @@ header("Location:Acc_Page/index.php");
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input type="password" class="input100" id="txt_uname" name="txt_pwd" placeholder="Password" required="required">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<span class="lnr lnr-lock"></span>
@@ -86,9 +113,7 @@ header("Location:Acc_Page/index.php");
 
 					
 					<div class="container-login100-form-btn p-t-25">
-						<button class="login100-form-btn">
-							Login
-						</button>
+						<input type="submit" value="Login" name="but_submit" id="but_submit" class="login100-form-btn">
 					</div>
 					
 					</div>
@@ -96,12 +121,6 @@ header("Location:Acc_Page/index.php");
 			</div>
 		</div>
 	</div>
-	
-	
-
-	
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 </html>
-<?php } ?>

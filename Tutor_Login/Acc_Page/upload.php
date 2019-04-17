@@ -21,7 +21,7 @@ $option6=$_POST["option6"];
 			
 		}
 		
-		$conn = mysqli_connect("localhost","arshatha1997","arshsql1997","Options");	
+		$conn = mysqli_connect("localhost","arshatha1997","arshsql1997","tutor_login");	
 		
 		foreach($_FILES["files"]["tmp_name"] as $key=>$tmp_name)
 		{
@@ -57,7 +57,7 @@ $option6=$_POST["option6"];
 				$query = "INSERT INTO UserFiles(FilePath, FileName,Option1,Option2,Option3,Option4,Option5,Option6) VALUES('Upload','".$newFileName."','$option1','$option2','$option3','$option4','$option5','$option6')";
 				
 				mysqli_query($conn, $query);
-				header("Location:upload.html" );	
+				header("Location:uploadpage.php" );	
 
 			}
 		}

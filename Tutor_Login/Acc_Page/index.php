@@ -1,9 +1,12 @@
 <?php
 //Include the database configuration file
-include 'dbconfig.php';
-
+include 'connect.php';
 //Fetch all the country data
-$query = $db->query("SELECT * FROM Option1 WHERE status = 1 ORDER BY 1_name ASC");
+if(!isset($_SESSION['uname'])){
+    header('Location:../index.php');
+}
+
+$query = $con->query("SELECT * FROM Option1 WHERE status = 1 ORDER BY 1_name ASC");
 
 //Count total number of rows
 $rowCount = $query->num_rows;
