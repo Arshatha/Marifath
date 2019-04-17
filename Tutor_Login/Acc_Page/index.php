@@ -1,7 +1,10 @@
 <?php
 //Include the database configuration file
 include 'connect.php';
-//Fetch all the country data
+$uname=$_POST["txt_uname"];
+$password=$POST["txt_pwd"];
+
+
 if(!isset($_SESSION['uname'])){
     header('Location:../index.php');
 }
@@ -157,7 +160,7 @@ $(document).ready(function(){
 			<div class="column" style="float: left !important;">
 			<form class="contact100-form validate-form" name="formUploadFile" method="post" style="width: 30% !important" enctype="multipart/form-data" id="uploadForm" action="upload.php" onsubmit="return validate();"> 
 				<span class="contact100-form-title">
-					 Upload Files<?php echo $login_session; ?>					 
+					 Upload Files <?php echo $login_session ; ?>					 
 				</span>
 
 				<div class="wrap-input100 input100-select">

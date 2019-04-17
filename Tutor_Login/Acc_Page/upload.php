@@ -1,10 +1,16 @@
+
 <?php
+
+include 'connect.php';
+
+
 $option1=$_POST["option1"];
 $option2=$_POST["option2"];
 $option3=$_POST["option3"];
 $option4=$_POST["option4"];
 $option5=$_POST["option5"];
 $option6=$_POST["option6"];
+
 
 	if(isset($_POST["btnSubmit"])){		
 		$errors = array();
@@ -54,7 +60,7 @@ $option6=$_POST["option6"];
 				$newFileName=$filename.$ext;				
 				move_uploaded_file($_FILES["files"]["tmp_name"][$key],"Upload/".$newFileName);
 				
-				$query = "INSERT INTO UserFiles(FilePath, FileName,Option1,Option2,Option3,Option4,Option5,Option6) VALUES('Upload','".$newFileName."','$option1','$option2','$option3','$option4','$option5','$option6')";
+				$query = "INSERT INTO UserFiles(FilePath, FileName,Option1,Option2,Option3,Option4,Option5,Option6,upload_time) VALUES('Upload','".$newFileName."','$option1','$option2','$option3','$option4','$option5','$option6',now())";
 				
 				mysqli_query($conn, $query);
 				header("Location:uploadpage.php" );	
